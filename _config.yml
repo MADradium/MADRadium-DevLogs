@@ -1,9 +1,9 @@
-title: Nighthawk-Pages
-description: "August 2023 to June 2024"
-owner_name: Tirth Thakkar
-github_username: Tirth-Thakkar
-github_repo: "Nighthawk-Pages"
-baseurl: "/Nighthawk-Pages"
+title: MADRadium DevLogs
+description: "The blogs we make to accompany our projects" 
+owner_name: MADRadium
+github_username: h4seeb-cmd
+github_repo: "MADRadium-DevLogs"
+baseurl: "/MADRadium-DevLogs"
 remote_theme: jekyll/minima
 minima:
   social_links:
