@@ -1,0 +1,247 @@
+<style>
+    h1 { 
+        text-align: center;
+        font-size: 60px;
+        margin-bottom: 10px;
+    }
+    h2 { 
+        text-align: center;
+    }
+    #colorSelect{
+        text-align: center;
+    }
+    img {
+        width: 70px;
+        height: 70px;
+    }
+    .space1{
+        z-index: 9;
+    }
+    .default{
+        padding: 10px;
+        cursor: move;
+        z-index: 10;
+        position: absolute;
+        color: #fff;
+        border: 1px solid whitesmoke;
+    }
+    .headerDefault{
+        border: 0.5px solid whitesmoke;
+    }
+    #slot1{
+        left: 30.7%;
+    }
+    #slot2{
+        left: 40.05%;
+    }
+    #slot3{
+        left: 49.4%;
+    }
+    #slot4{
+        left: 58.7%;
+    }
+    #slot5{
+        left: 68%;
+    }
+    #slot6{
+        left: 77.25%
+    }
+    #slot7{
+        right:79.1%
+    }
+</style>
+<body>
+<section id = header>
+    <h1>Palette Puzzle!</h1>
+    <b>
+
+    </b>
+</section>
+
+<section id = intro>
+    <h2>Pick a color to sort by</h2>
+    <section id = colorSelect>
+        <button id = red>
+            <img id = redIMG src = "{{site.baseurl}}/images/red.png">
+        </button>
+        <button id = green>
+            <img id = greenIMG src = "{{site.baseurl}}/images/green.png">
+        </button>
+        <button id = blue>
+            <img id = blueIMG src = "{{site.baseurl}}/images/blue.png">
+        </button>
+    </section>
+</section>
+<div class="space1">
+
+    <div class = "default" id="slot0">  
+        <div class = headerDefault id="slot0header">Click here to move</div>
+        <p>Move</p>
+        <p>this</p>
+        <p>DIV</p>
+
+    </div>
+    <div class = "default" id="slot1">  
+        <div class = headerDefault id="slot1header">Click here to move</div>
+        <p>Move</p>
+        <p>this</p>
+        <p>DIV</p>
+
+    </div>
+    <div class = "default" id="slot2">  
+        <div class = headerDefault id="slot2header">Click here to move</div>
+        <p>Move</p>
+        <p>this</p>
+        <p>DIV</p>
+
+    </div>
+    <div class = "default" id="slot3">  
+        <div id="slot3header">Click here to move</div>
+        <p>Move</p>
+        <p>this</p>
+        <p>DIV</p>
+
+    </div>
+
+    <div class = "default" id="slot4">  
+        <div id="slot4header">Click here to move</div>
+        <p>Move</p>
+        <p>this</p>
+        <p>DIV</p>
+
+    </div>
+
+    <div class = "default" id="slot5">  
+        <div id="slot5header">Click here to move</div>
+        <p>Move</p>
+        <p>this</p>
+        <p>DIV</p>
+
+    </div> 
+
+    <div class = "default" id="slot6">  
+        <div id="slot6header">Click here to move</div>
+        <p>Move</p>
+        <p>this</p>
+        <p>DIV</p>
+
+    </div> 
+
+    <div class = "default" id="slot7">  
+        <div id="slot7header">Click here to move</div>
+        <p>Move</p>
+        <p>this</p>
+        <p>DIV</p>
+
+    </div> 
+</div>
+
+<script>
+    const _0 = document.getElementById("slot0");
+    const _1 = document.getElementById("slot1");
+    const _2 = document.getElementById("slot2");
+    const _3 = document.getElementById("slot3");
+    const _4 = document.getElementById("slot4");
+    const _5 = document.getElementById("slot5");
+
+
+    function rgbGen(){
+        r = Math.floor(Math.random() * 256);
+        g = Math.floor(Math.random() * 256);
+        b = Math.floor(Math.random() * 256);
+    };
+
+    function randomColorBox1(){
+        rgbGen();
+        RGB = [`${r}`, `${g}`, `${b}`];
+        console.log(RGB);
+        _0.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    }
+    function randomColorBox2(){
+        rgbGen();
+        RGB = [`${r}`, `${g}`, `${b}`];
+        console.log(RGB);
+        _1.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    }
+    function randomColorBox3(){
+        rgbGen();
+        RGB = [`${r}`, `${g}`, `${b}`];
+        console.log(RGB);
+        _2.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    }
+    function randomColorBox4(){
+        rgbGen();
+
+        RGB = [`${r}`, `${g}`, `${b}`];
+        console.log(RGB);
+        _3.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    }
+    function randomColorBox5(){
+        rgbGen();
+
+        RGB = [`${r}`, `${g}`, `${b}`];
+        console.log(RGB);
+        _4.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    }
+    function randomColorBox6(){
+        rgbGen();
+        RGB = [`${r}`, `${g}`, `${b}`];
+        console.log(RGB);
+        _ps6.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    }
+
+    randomColorBox1();
+    randomColorBox2();
+    randomColorBox3();
+    randomColorBox4();
+    randomColorBox5();
+    randomColorBox6();
+
+    dragElement(document.getElementById("0"));
+    dragElement(document.getElementById("1")); 
+    dragElement(document.getElementById("2")); 
+    dragElement(document.getElementById("3"));
+    dragElement(document.getElementById("4"));
+    dragElement(document.getElementById("ps6"));
+    function dragElement(elmnt) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        if (document.getElementById(elmnt.id + "header")) {
+        // if present, the header is where you move the DIV from:
+        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+        } else {
+        // otherwise, move the DIV from anywhere inside the DIV:
+        elmnt.onmousedown = dragMouseDown;
+        }
+        elmnt.style.position = "absolute";
+        function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // get the mouse cursor position at startup:
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        // call a function whenever the cursor moves:
+        document.onmousemove = elementDrag;
+        }
+    
+        function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // calculate the new cursor position:
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        // set the element's new position:
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        }
+    
+        function closeDragElement() {
+        // stop moving when mouse button is released:
+        document.onmouseup = null;
+        document.onmousemove = null;
+        }
+    }
+</script>
+</body>
