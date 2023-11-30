@@ -15,13 +15,14 @@
         height: 70px;
     }
     .space1{
-        z-index: 1;
+        z-index: 0;
         border-style: solid;
         border-color: white;
         margin-top: 50px;
-        width: 1200px;
-        right: 500px;
+        width: 1500px;
+        right: 305px;
         height: 480px;
+        position: relative;
 
     }
     .default{
@@ -31,33 +32,43 @@
         position: absolute;
         color: #fff; 
         border: 1px solid whitesmoke;
-        z-index:0;
+        z-index:1;
         top: 560px;
         height: 150px;
+        left:21.35%;
     }
     .headerDefault{
         border: 0.5px solid whitesmoke;
     }
-    #slot1{
+    #slot2{
         left: 30.7%;
     }
-    #slot2{
+    #slot3{
         left: 40.05%;
     }
-    #slot3{
+    #slot4{
         left: 49.4%;
     }
-    #slot4{
+    #slot5{
         left: 58.7%;
     }
-    #slot5{
+    #slot6{
         left: 68%;
     }
-    #slot6{
-        left: 77.25%
-    }
     #slot7{
-        left: 12%
+        left: 77.25%;
+    }
+    #slot0{
+        left: 12%;
+    }
+    .vl {
+        border-left: 6px solid green;
+        height: 300px;
+        position: absolute;
+        left: 0.2%;
+        margin-left: -3px;
+        top: 0;
+        z-index:3;
     }
 </style>
 <body>
@@ -84,6 +95,7 @@
 </section>
 <div class="space1">
 </div>
+<div class="v1"></div>
     <div class = "default" id="slot0">  
         <div class = headerDefault id="slot0header">Click here to move</div>
 
@@ -128,7 +140,6 @@
 
 
     </div> 
-
 <script>
     const _0 = document.getElementById("slot0");
     const _1 = document.getElementById("slot1");
@@ -138,7 +149,15 @@
     const _5 = document.getElementById("slot5");
     const _6 = document.getElementById("slot6");
     const _7 = document.getElementById("slot7");
-
+      /*  const colorSelectR = document.getElementById("red");
+    const colorSelectG = document.getElementById("green");
+    const colorSelectB = document.getElementById("blue");
+    const colorBox = document.getElementById("space1");
+function buttonClick(){
+        colorSelectR.onclick(colorBox.style.display = none);
+    } 
+    */
+   // buttonClick();
     function rgbGen(){
         r = Math.floor(Math.random() * 256);
         g = Math.floor(Math.random() * 256);
