@@ -40,7 +40,7 @@ permalink: /fibonacci/
                 var newRow = document.createElement("tr");
                 var nameCol = document.createElement("td");
                 nameCol.innerHTML = names[i];
-                var executionCol = document.creteElement("td");
+                var executionCol = document.createElement("td");
                 executionCol.innerHTML = String(methodArray[i]);
                 var resultCol = document.createElement("td");
                 resultCol.innerHTML = String(result);
