@@ -44,6 +44,7 @@ permalink: /fibonacci/
                 executionCol.innerHTML = String(methodArray[i]);
                 var resultCol = document.createElement("td");
                 resultCol.innerHTML = String(result);
+                newRow.appendChild(nameCol);
                 newRow.appendChild(executionCol);
                 newRow.appendChild(resultCol);
                 document.getElementById("fibonacci_data").appendChild(newRow);
