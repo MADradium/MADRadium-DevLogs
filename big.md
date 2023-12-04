@@ -175,22 +175,37 @@ permalink: /bigSim/
         }, 0.01);
     }
     function simulateMergeSort(steps) {
-        for (var i = 0; i < 5000; i++) {
-            document.getElementById(String(steps[steps.length - 1][i])).style.backgroundColor = `rgb(${colorData[steps[steps.length - 1][i]][0]}, ${colorData[steps[steps.length - 1][i]][1]}, ${colorData[steps[steps.length - 1][i]][2]})`;
-        }
-        // var frontIndex = 0;
-        // var dataIndex = 0;
-        // var intervalId = setInterval(() => {
-        //     if (dataIndex < steps.length) {
-        //         for (var i = 0; i < steps[dataIndex].length; i++) {
-        //             document.getElementById(String(frontIndex)).style.backgroundColor = `rgb(${colorData[steps[dataIndex][i]][0]}, ${colorData[steps[dataIndex][i]][0]}, ${colorData[steps[dataIndex][i]][0]})`;
-        //             frontIndex++;
-        //         }
-        //         dataIndex++;
-        //     } else {
-        //         clearInterval(intervalId);
-        //     }
-        // }, 0.01)
+        var index = 0;
+        var frontIndex = 0;
+        var intervalId = setInterval(() => {
+            if (index < steps.length) {
+                var currentStep = steps[index];
+                frontIndex = Math.min(...currentStep); // the minimum index in the array is the starting point
+                for (var j = 0; j < currentStep.length; j++) {
+                    document.getElementById(String(frontIndex)).style.backgroundColor = `rgb(${colorData[currentStep[j]][0]}, ${colorData[currentStep[j]][1]}, ${colorData[currentStep[j]][2]})`;
+                    frontIndex++;
+                }
+                index++;
+            } else {
+                clearInterval(intervalId);
+            }
+        }, 0.01);
     }
     createBoxes();
+    //for (var i = 0; i < 5000; i++) {
+    //     document.getElementById(String(steps[steps.length - 1][i])).style.backgroundColor = `rgb(${colorData[steps[steps.length - 1][i]][0]}, ${colorData[steps[steps.length - 1][i]][1]}, ${colorData[steps[steps.length - 1][i]][2]})`;
+    // }
+    // // var frontIndex = 0;
+    // // var dataIndex = 0;
+    // // var intervalId = setInterval(() => {
+    // //     if (dataIndex < steps.length) {
+    // //         for (var i = 0; i < steps[dataIndex].length; i++) {
+    // //             document.getElementById(String(frontIndex)).style.backgroundColor = `rgb(${colorData[steps[dataIndex][i]][0]}, ${colorData[steps[dataIndex][i]][0]}, ${colorData[steps[dataIndex][i]][0]})`;
+    // //             frontIndex++;
+    // //         }
+    // //         dataIndex++;
+    // //     } else {
+    // //         clearInterval(intervalId);
+    // //     }
+    // // }, 0.01)
 </script>
