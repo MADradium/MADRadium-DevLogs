@@ -144,7 +144,7 @@ permalink: /bigSim/
                 var nameCol = document.createElement("td");
                 nameCol.innerHTML = capitalizeFirstLetter(type);
                 var complexityCol = document.createElement("td");
-                if (sortType != "merge") {
+                if (type != "merge") {
                     complexityCol.innerHTML = "O(n<sup>2</sup>)";
                 } else {
                     complexityCol.innerHTML = "O(nlog(n))";
