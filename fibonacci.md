@@ -1,6 +1,7 @@
 ---
-layout: base
-title: Fibonacci Sequence!
+layout: default
+search_exclude: false
+permalink: /fibonacci/
 ---
 
 <input type="number" id="fibonacci_box" name="fibonacci_box" min="1" max="99">
@@ -30,25 +31,19 @@ title: Fibonacci Sequence!
         .then(data => {
             // handling the response data
             console.log(data);
-            var currentData = document.getElementsByClassName("fibonacci");
-            console.log(currentData);
-            for (var j = 0; j < currentData.length; j++) {
-                currentData[j].remove();
-                j--;
-            }
+            var result = data['result'];
             var names = ["Golden Ratio", "Matrix Exponentiation"];
-            // var goldenRatioTime = data['golden_Ratio'];
-            // var matrixExponentiationTime = data['matrix_Exponentiation'];
-            // var methodArray = [goldenRatioTime, matrixExponentiationTime];
-            for (var i = 0; i < names.length; i++) {
+            var goldenRatioTime = data['golden_Ratio'];
+            var matrixExponentiationTime = data['matrix_Exponentiation'];
+            var methodArray = [goldenRatioTime, matrixExponentiationTime];
+            for (var i = 0; i < methodArray.length; i++) {
                 var newRow = document.createElement("tr");
-                newRow.setAttribute("class", "fibonacci")
                 var nameCol = document.createElement("td");
                 nameCol.innerHTML = names[i];
                 var executionCol = document.createElement("td");
-                executionCol.innerHTML = String(data[names[i]]["executionTime"]);
+                executionCol.innerHTML = String(methodArray[i]);
                 var resultCol = document.createElement("td");
-                resultCol.innerHTML = String(data[names[i]]["result"]);
+                resultCol.innerHTML = String(result);
                 newRow.appendChild(nameCol);
                 newRow.appendChild(executionCol);
                 newRow.appendChild(resultCol);
