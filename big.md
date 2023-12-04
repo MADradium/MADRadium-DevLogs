@@ -111,7 +111,7 @@ permalink: /bigSim/
             sortType: sortType,
             big: true
         };
-        fetch("http://localhost:8085/api/sortingAlgorithm/", {
+        fetch("http://localhost:8115/api/sortingAlgorithm/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
