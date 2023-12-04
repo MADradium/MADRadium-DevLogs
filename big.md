@@ -23,6 +23,7 @@ permalink: /bigSim/
 <table id="data_container" style="display: none; justify-content: center;">
     <tr>
         <th>Sort Type</th>
+        <th>Time Complexity</th>
         <th>Average Time Elapsed (Nanoseconds)</th>
         <th>Number of Comparisons</th>
         <th>Number of Swaps/Insertions</th>
@@ -142,6 +143,12 @@ permalink: /bigSim/
                 var newRow = document.createElement("tr");
                 var nameCol = document.createElement("td");
                 nameCol.innerHTML = capitalizeFirstLetter(type);
+                var complexityCol = document.createElement("td");
+                if (sortType != "merge") {
+                    complexityCol.innerHTML = "O(n<sup>2</sup>)";
+                } else {
+                    complexityCol.innerHTML = "O(nlog(n))";
+                }
                 var timeCol = document.createElement("td");
                 timeCol.innerHTML = String(data[type]["averageTime"]);
                 var compCol = document.createElement("td");
@@ -149,6 +156,7 @@ permalink: /bigSim/
                 var swapCol = document.createElement("td");
                 swapCol.innerHTML = String(data[type]['swaps']);
                 newRow.appendChild(nameCol);
+                newRow.appendChild(complexityCol);
                 newRow.appendChild(timeCol);
                 newRow.appendChild(compCol);
                 newRow.appendChild(swapCol);
