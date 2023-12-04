@@ -1,0 +1,61 @@
+---
+permalink: /1000.html
+layout: base
+---
+<head>
+    <style>
+        #Bigbox {
+            margin: 0px;
+            padding: 0px;
+            justify-content: center;
+          }
+          
+          .row {
+            display: flex;
+          }
+          
+          .box {
+            width: 10px;
+            height: 10px;
+            border: 0.5px solid black;
+            background-color: #F792B3;
+            padding: 0px;
+            margin: 0px;
+          }
+    </style>
+</head>
+<body>
+    <div id="Bigbox">
+        <!--peins-->
+    </div>
+    <script>
+        var cont = document.getElementById("Bigbox");
+        const theColors = new Map();
+        let slot1 = "";
+        let slot2 = "";
+        let mixed = "";
+        let twenty = 0;
+
+        function createBoxes() {
+            for (let i = 0; i < 50; i++) {
+                var newDiv = document.createElement("div");
+                newDiv.setAttribute("id", "box_row_" + String(i));
+                newDiv.setAttribute("class", "row");
+                cont.appendChild(newDiv);  
+                for (let j = 0; j < 100; j++) {
+                    var box = document.createElement("div");
+                    box.setAttribute("class", "box"); 
+                    r = Math.floor(Math.random() * 256);
+                    g = Math.floor(Math.random() * 256);
+                    b = Math.floor(Math.random() * 256);
+                    box.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+                    newDiv.appendChild(box);
+                    theColors.set(twenty, [r, g, b]);    
+                    twenty++;
+                }
+            }
+        }
+
+        createBoxes();
+    </script>
+</body>
