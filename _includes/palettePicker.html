@@ -7,8 +7,15 @@
     h2 { 
         text-align: center;
     }
+    h3 { 
+        text-align: center;
+    }
     #colorSelect{
         text-align: center;
+    }
+    #sortSelect{
+        text-align: center;
+        display: none;
     }
     img {
         width: 70px;
@@ -95,7 +102,11 @@
         </button>
     </section>
 </section>
+<section id = colorchoice>
+
+</section>
 <div id="space1">
+    <h3>Sort the following colors based how much of the color you picked it has.</h3>
 </div>
 <div class="v1"></div>
     <div class = "default" id="slot0">  
@@ -142,6 +153,19 @@
 
 
     </div> 
+    <div id = "sortSelect">
+        <h3>Pick which type of sort you want the computer to do!</h3>
+        <button id = Selection>
+            Selection Sort
+        </button>
+        <button id = Bubble>
+            Bubble Sort
+        </button>
+        <button id = Merge>
+            Merge Sort
+        </button>
+    </div>
+
 <script>
     const _0 = document.getElementById("slot0");
     const _1 = document.getElementById("slot1");
@@ -152,6 +176,12 @@
     const _6 = document.getElementById("slot6");
     const _7 = document.getElementById("slot7");
     const _border = document.getElementById("space1");
+    const _colorSelect = document.getElementById("intro");
+    const _chosenColor = document.getElementById("colorchoice");
+    const _sortSelect = document.getElementById("sortSelect");
+    const _selectionButton = document.getElementById("Selection");
+    const _bubbleButton = document.getElementById("Bubble");
+    const _mergeButton = document.getElementById("Merge");
       /*  const colorSelectR = document.getElementById("red");
     const colorSelectG = document.getElementById("green");
     const colorSelectB = document.getElementById("blue");
@@ -233,17 +263,28 @@ function buttonClick(){
     document.getElementById('red').addEventListener('click', function () {
         colorBoxes();
         dragBoxes();
-
+        console.log('red');
+        _chosenColor.innerHTML = `<h3> Color Chosen: Red <h3>`;
+        _colorSelect.style.display = "none";
+        _sortSelect.style.display = "block";
     });
 
     document.getElementById('green').addEventListener('click', function () {
         colorBoxes();
         dragBoxes();
+        console.log('green');
+        _chosenColor.innerHTML = `<h3> Color Chosen: Green <h3>`;
+        _colorSelect.style.display = "none";
+        _sortSelect.style.display = "block";
     });
 
     document.getElementById('blue').addEventListener('click', function () {
         colorBoxes();
         dragBoxes();
+        console.log('blue');
+        _chosenColor.innerHTML = `<h3> Color Chosen: Blue <h3>`;
+        _colorSelect.style.display = "none";
+        _sortSelect.style.display = "block";
     });
 </script>
 </body>
