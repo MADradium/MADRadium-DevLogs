@@ -36,6 +36,7 @@
         top: 560px;
         height: 150px;
         left:21.35%;
+        display: none;
     }
     .headerDefault{
         border: 0.5px solid whitesmoke;
@@ -174,16 +175,17 @@ function buttonClick(){
         }
     }
 
-    colorBoxes();
+ 
 
     function dragBoxes(){
         var totalSlots = [_0, _1, _2, _3, _4, _5, _6, _7];
         for(let i = 0; i < 8; i++){
+            totalSlots[i].style.display = `block`;
             dragElement(totalSlots[i]);
         }
     }
 
-    dragBoxes();
+
 
     function dragElement(elmnt) {
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -225,5 +227,20 @@ function buttonClick(){
         document.onmousemove = null;
         }
     }
+    document.getElementById('red').addEventListener('click', function () {
+        colorBoxes();
+        dragBoxes();
+
+    });
+
+    document.getElementById('green').addEventListener('click', function () {
+        colorBoxes();
+        dragBoxes();
+    });
+
+    document.getElementById('blue').addEventListener('click', function () {
+        colorBoxes();
+        dragBoxes();
+    });
 </script>
 </body>
