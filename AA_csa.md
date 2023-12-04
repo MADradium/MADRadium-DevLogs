@@ -36,20 +36,19 @@ title: Fibonacci Sequence!
                 currentData[j].remove();
                 j--;
             }
-            var result = data['result'];
             var names = ["Golden Ratio", "Matrix Exponentiation"];
-            var goldenRatioTime = data['golden_Ratio'];
-            var matrixExponentiationTime = data['matrix_Exponentiation'];
-            var methodArray = [goldenRatioTime, matrixExponentiationTime];
-            for (var i = 0; i < methodArray.length; i++) {
+            // var goldenRatioTime = data['golden_Ratio'];
+            // var matrixExponentiationTime = data['matrix_Exponentiation'];
+            // var methodArray = [goldenRatioTime, matrixExponentiationTime];
+            for (var i = 0; i < names.length; i++) {
                 var newRow = document.createElement("tr");
                 newRow.setAttribute("class", "fibonacci")
                 var nameCol = document.createElement("td");
                 nameCol.innerHTML = names[i];
                 var executionCol = document.createElement("td");
-                executionCol.innerHTML = String(methodArray[i]);
+                executionCol.innerHTML = String(data[names[i]]["executionTime"]);
                 var resultCol = document.createElement("td");
-                resultCol.innerHTML = String(result);
+                resultCol.innerHTML = String(data[names[i]]["result"]);
                 newRow.appendChild(nameCol);
                 newRow.appendChild(executionCol);
                 newRow.appendChild(resultCol);
