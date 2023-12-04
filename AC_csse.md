@@ -1,5 +1,5 @@
 ---
 layout: base
-title: Palette Puzzle
+title: Palette Puzzle!
 ---
 {% include palettePicker.html %}

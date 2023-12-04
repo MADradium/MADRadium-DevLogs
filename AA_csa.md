@@ -1,5 +1,5 @@
 ---
 layout: base
-title: Fibonacci Sequence
+title: Fibonacci Sequence!
 ---
-{% include fibonacci.md %}
+{% include palettePicker.html %}
