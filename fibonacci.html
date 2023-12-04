@@ -1,0 +1,44 @@
+---
+permalink: /fibonacci.html
+layout: base
+---
+<header>
+    <style>
+        .flexcontainer {
+            display: flex;
+            height: 500px;
+            justify-content: space-around;
+            background-color: rgb(84, 94, 94);
+        }
+        .flexcontainer > div {
+            align-self: center;
+            padding: 10px;
+        }
+        #fib {
+            width: 150px;
+            margin: auto;
+        }
+    </style>
+</header>
+<body>
+    <div class="flexcontainer">
+        <div style="display: flex; flex-direction: column;">
+            <label for="fib">How many numbers of the fibonacci sequence?</label>
+            <input type="number" id="fib" name="fib">
+        </div>
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Time</th>
+                    <th>List</th>
+                </tr>
+                </thead>
+                <tbody id="result">
+                    <!--The results-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
