@@ -30,19 +30,12 @@ title: Fibonacci Sequence!
         .then(data => {
             // handling the response data
             console.log(data);
-            var currentData = document.getElementsByClassName("fibonacci");
-            console.log(currentData);
-            for (var j = 0; j < currentData.length; j++) {
-                currentData[j].remove();
-                j--;
-            }
-            var names = ["Golden Ratio", "Matrix Exponentiation"];
+            var names = ["For Loop", "While Loop", "Stream Loop", "Golden Ratio", "Matrix Exponentiation"];
             // var goldenRatioTime = data['golden_Ratio'];
             // var matrixExponentiationTime = data['matrix_Exponentiation'];
             // var methodArray = [goldenRatioTime, matrixExponentiationTime];
             for (var i = 0; i < names.length; i++) {
                 var newRow = document.createElement("tr");
-                newRow.setAttribute("class", "fibonacci")
                 var nameCol = document.createElement("td");
                 nameCol.innerHTML = names[i];
                 var executionCol = document.createElement("td");
