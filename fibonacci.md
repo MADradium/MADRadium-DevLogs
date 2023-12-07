@@ -31,7 +31,6 @@ permalink: /fibonacci/
         .then(data => {
             // handling the response data
             console.log(data);
-            var result = data['result'];
             var names = ["For Loop", "While Loop", "Stream Loop", "Golden Ratio", "Matrix Exponentiation"];
             // var goldenRatioTime = data['golden_Ratio'];
             // var matrixExponentiationTime = data['matrix_Exponentiation'];
