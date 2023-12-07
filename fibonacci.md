@@ -16,7 +16,7 @@ permalink: /fibonacci/
 </table>
 <script>
     function fibonacciCall() {
-        fetch("http://localhost:8085/api/fibonacci/" + String(document.getElementById("fibonacci_box").value), {
+        fetch("http://localhost:8115/api/fibonacci/" + String(document.getElementById("fibonacci_box").value), {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
