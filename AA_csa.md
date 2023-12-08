@@ -36,7 +36,7 @@ title: Fibonacci Sequence!
                 currentData[j].remove();
                 j--;
             }
-            var names = ["For Loop", "While Loop", "Stream Loop", "Golden Ratio", "Matrix Exponentiation"];
+            var names = ["For Loop", "While Loop", "Recursion", "Stream Loop", "Golden Ratio", "Matrix Exponentiation"];
             for (var i = 0; i < names.length; i++) {
                 var newRow = document.createElement("tr");
                 newRow.setAttribute("class", "fibonacci")
