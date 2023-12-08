@@ -182,6 +182,9 @@
     const _selectionButton = document.getElementById("Selection");
     const _bubbleButton = document.getElementById("Bubble");
     const _mergeButton = document.getElementById("Merge");
+    var colorData = {};
+    var whichColor = 0;
+    const sortTypes = ["bubble", "selection", "insertion", "merge"];
       /*  const colorSelectR = document.getElementById("red");
     const colorSelectG = document.getElementById("green");
     const colorSelectB = document.getElementById("blue");
@@ -201,8 +204,9 @@ function buttonClick(){
         var totalSlots = [_0, _1, _2, _3, _4, _5, _6, _7];
         for(let i = 0; i < 8; i++){
             rgbGen();
-            RGB = [`${r}`, `${g}`, `${b}`];
-            console.log(RGB);
+            RGB = [r, g, b];
+            colorData[i] = RGB;
+            console.log(colorData);
             totalSlots[i].style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
         }
     }
@@ -263,7 +267,8 @@ function buttonClick(){
     document.getElementById('red').addEventListener('click', function () {
         colorBoxes();
         dragBoxes();
-        console.log('red');
+        whichColor = 0;
+        console.log(whichColor);
         _chosenColor.innerHTML = `<h3> Color Chosen: Red <h3>`;
         _colorSelect.style.display = "none";
         _sortSelect.style.display = "block";
@@ -272,7 +277,8 @@ function buttonClick(){
     document.getElementById('green').addEventListener('click', function () {
         colorBoxes();
         dragBoxes();
-        console.log('green');
+        whichColor = 1;
+        console.log(whichColor);
         _chosenColor.innerHTML = `<h3> Color Chosen: Green <h3>`;
         _colorSelect.style.display = "none";
         _sortSelect.style.display = "block";
@@ -281,13 +287,52 @@ function buttonClick(){
     document.getElementById('blue').addEventListener('click', function () {
         colorBoxes();
         dragBoxes();
-        console.log('blue');
+        whichColor = 2;
+        console.log(whichColor);
         _chosenColor.innerHTML = `<h3> Color Chosen: Blue <h3>`;
         _colorSelect.style.display = "none";
         _sortSelect.style.display = "block";
     });
+
+    function sortCall(sortType) {
+        _sortSelect.style.display = "none";
+        var requestBody = {
+            rgbData: colorData,
+            color: whichColor,
+            sortType: sortType,
+            big: false
+        };
+        fetch("http://localhost:8115/api/sortingAlgorithm/", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestBody, (key, value) => {
+                // Convert keys to strings
+                if (typeof key === 'number') {
+                    return key.toString();
+                }
+                return value;
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            // handling errors
+            console.error('Fetch error:', error);
+        });
+    }; 
+
     _selectionButton.addEventListener('click', function() {
         console.log('selection');
+        sortCall('selection');
     });
     _bubbleButton.addEventListener('click', function() {
         console.log('bubble');
