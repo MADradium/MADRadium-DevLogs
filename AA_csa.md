@@ -15,7 +15,7 @@ title: Fibonacci Sequence!
 </table>
 <script>
     function fibonacciCall() {
-        fetch("http://localhost:8115/api/fibonacci/" + String(document.getElementById("fibonacci_box").value), {
+        fetch("https://palettepuzzle.stu.nighthawkcodingsociety.com/api/fibonacci/" + String(document.getElementById("fibonacci_box").value), {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -36,10 +36,7 @@ title: Fibonacci Sequence!
                 currentData[j].remove();
                 j--;
             }
-            var names = ["Golden Ratio", "Matrix Exponentiation"];
-            // var goldenRatioTime = data['golden_Ratio'];
-            // var matrixExponentiationTime = data['matrix_Exponentiation'];
-            // var methodArray = [goldenRatioTime, matrixExponentiationTime];
+            var names = ["For Loop", "While Loop", "Recursion", "Stream Loop", "Golden Ratio", "Matrix Exponentiation"];
             for (var i = 0; i < names.length; i++) {
                 var newRow = document.createElement("tr");
                 newRow.setAttribute("class", "fibonacci")
