@@ -111,7 +111,7 @@ permalink: /bigSim/
             sortType: sortType,
             big: true
         };
-        fetch("http://localhost:8115/api/sortingAlgorithm/", {
+        fetch("https://palettepuzzle.stu.nighthawkcodingsociety.com/api/sortingAlgorithm/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
