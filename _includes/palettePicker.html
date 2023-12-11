@@ -411,10 +411,14 @@ function buttonClick(){
         })
         .then(data => {
             console.log(data);
-            var specificIndex = 7;
-            endSorted = data.steps[7];
+            var maxIndex = data.steps.length - 1;
+
+            // Set specificIndex to the calculated maxIndex
+            var specificIndex = maxIndex;
+            
+            // Access the steps array using specificIndex
+            endSorted = data.steps[specificIndex];
             endList = endSorted;
-            console.log(`Colors all sorted on step${specificIndex}:`, endSorted);
         })
         .catch(error => {
             // handling errors
@@ -463,13 +467,90 @@ function buttonClick(){
             
     },100);
     });
-    _bubbleButton.addEventListener('click', function() {
+    _bubbleButton.addEventListener('click', async function() {
         console.log('bubble');
         sortCall('bubble');
+        _border2.style.display = `block`;
+        await sortCall('bubble');
+        setTimeout(function(){
+                var totalSlots = [_default2[0], _default2[1], _default2[2], _default2[3], _default2[4], _default2[5], _default2[6], _default2[7]];
+                var sourceList = [_default2[0].id, _default2[1].id, _default2[2].id, _default2[3].id, _default2[4].id, _default2[5].id, _default2[6].id, _default2[7].id];
+                sourceList = sourceList.map(id => id.replace("slot", ""));
+                console.log("SOURCE: " + sourceList);
+                console.log("before: " + totalSlots[0].id);
+                console.log("endList: " + endList[0]);
+                console.log("after: " + totalSlots[0].id);
+                //totalSlots[0].id = `slot${endList[0]}`;
+            for(i = 0; i < 8; i++){
+                totalSlots[i].style.display = `block`;
+                totalSlots[i].style.backgroundColor = `rgb(${colorData[i]})`;
+            }
+            let finalOrder = [];
+            endList.forEach(endValue => {
+                const index = sourceList.indexOf(endValue.toString());
+                if (index !== -1) {
+                    // If the value is found in sourceList, add it to the orderedList
+                    finalOrder.push(`slot${sourceList[index]}`);
+                } else {
+                    // Handle the case where the value is not found (if needed)
+                    console.warn(`Value '${endValue}' not found in sourceList.`);
+                }
+
+            })
+            console.log("FINAL " + finalOrder);
+            
+            for(i=0; i<8; i++){
+                var x = 0
+                x = finalOrder[i];
+                x = x.slice(-1);
+                console.log(x);
+                totalSlots[x].id = `slot${i}`;
+            }
+            
+    },100);
+
     });
-    _mergeButton.addEventListener('click', function() {
+    _mergeButton.addEventListener('click', async function() {
         console.log('merge');
         sortCall('merge');
+        _border2.style.display = `block`;
+        await sortCall('merge');
+        setTimeout(function(){
+                var totalSlots = [_default2[0], _default2[1], _default2[2], _default2[3], _default2[4], _default2[5], _default2[6], _default2[7]];
+                var sourceList = [_default2[0].id, _default2[1].id, _default2[2].id, _default2[3].id, _default2[4].id, _default2[5].id, _default2[6].id, _default2[7].id];
+                sourceList = sourceList.map(id => id.replace("slot", ""));
+                console.log("SOURCE: " + sourceList);
+                console.log("before: " + totalSlots[0].id);
+                console.log("endList: " + endList[0]);
+                console.log("after: " + totalSlots[0].id);
+                //totalSlots[0].id = `slot${endList[0]}`;
+            for(i = 0; i < 8; i++){
+                totalSlots[i].style.display = `block`;
+                totalSlots[i].style.backgroundColor = `rgb(${colorData[i]})`;
+            }
+            let finalOrder = [];
+            endList.forEach(endValue => {
+                const index = sourceList.indexOf(endValue.toString());
+                if (index !== -1) {
+                    // If the value is found in sourceList, add it to the orderedList
+                    finalOrder.push(`slot${sourceList[index]}`);
+                } else {
+                    // Handle the case where the value is not found (if needed)
+                    console.warn(`Value '${endValue}' not found in sourceList.`);
+                }
+
+            })
+            console.log("FINAL " + finalOrder);
+            
+            for(i=0; i<8; i++){
+                var x = 0
+                x = finalOrder[i];
+                x = x.slice(-1);
+                console.log(x);
+                totalSlots[x].id = `slot${i}`;
+            }
+            
+    },100);
     });
 </script>
 </body>
