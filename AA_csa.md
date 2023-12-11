@@ -8,6 +8,7 @@ title: Fibonacci Sequence!
 <table id="fibonacci_data">
     <tr>
         <th>Method</th>
+        <th>Time Complexity</th>
         <th>Execution Time (Nanoseconds)</th>
         <th>Result</th>
     </tr>
@@ -15,7 +16,8 @@ title: Fibonacci Sequence!
 </table>
 <script>
     function fibonacciCall() {
-        fetch("https://palettepuzzle.stu.nighthawkcodingsociety.com/api/fibonacci/" + String(document.getElementById("fibonacci_box").value), {
+        // "https://palettepuzzle.stu.nighthawkcodingsociety.com/api/fibonacci/"
+        fetch("http://localhost:8115/api/fibonacci/" + String(document.getElementById("fibonacci_box").value), {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,16 +39,20 @@ title: Fibonacci Sequence!
                 j--;
             }
             var names = ["For Loop", "While Loop", "Recursion", "Stream Loop", "Golden Ratio", "Matrix Exponentiation"];
+            var complexities = ["O(n)", "O(n)", "O(n<sup>2</sup>)", "O(n)", "O(1)", "O(log(n))"];
             for (var i = 0; i < names.length; i++) {
                 var newRow = document.createElement("tr");
                 newRow.setAttribute("class", "fibonacci")
                 var nameCol = document.createElement("td");
                 nameCol.innerHTML = names[i];
+                var complexityCol = document.createElement("td");
+                complexityCol.innerHTML = complexities[i];
                 var executionCol = document.createElement("td");
                 executionCol.innerHTML = String(data[names[i]]["executionTime"]);
                 var resultCol = document.createElement("td");
                 resultCol.innerHTML = String(data[names[i]]["result"]);
                 newRow.appendChild(nameCol);
+                newRow.appendChild(complexityCol);
                 newRow.appendChild(executionCol);
                 newRow.appendChild(resultCol);
                 document.getElementById("fibonacci_data").appendChild(newRow);
