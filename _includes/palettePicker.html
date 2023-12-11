@@ -53,7 +53,7 @@
         color: #fff; 
         border: 1px solid whitesmoke;
         z-index:1;
-        top: 560px;
+        top: 500px;
         height: 150px;
         left:21.35%;
         display: none;
@@ -66,7 +66,7 @@
         color: #fff; 
         border: 1px solid whitesmoke;
         z-index:0;
-        top: 950px;
+        top: 1100px;
         height: 150px;
         left:21.35%;
         display: none;
@@ -198,8 +198,13 @@
         <button id = Merge>
             Merge Sort
         </button>
+        <button id = Insertion>
+            Insertion Sort
+        </button>
     </div>
+    <section id = sortchoice>
 
+    </section>
     <div id="space2">
         <h3>Computer Sorted Colors (least to greatest):</h3>
     </div>
@@ -263,7 +268,9 @@
     const _colorSelect = document.getElementById("intro");
     const _chosenColor = document.getElementById("colorchoice");
     const _sortSelect = document.getElementById("sortSelect");
+    const _chosenSort = document.getElementById("sortchoice");
     const _selectionButton = document.getElementById("Selection");
+    const _insertionButton = document.getElementById("Insertion");
     const _bubbleButton = document.getElementById("Bubble");
     const _mergeButton = document.getElementById("Merge");
     const _border2 = document.getElementById("space2");
@@ -427,6 +434,7 @@ function buttonClick(){
     }; 
 
     _selectionButton.addEventListener('click', async function() {
+        _chosenSort.innerHTML = `<h3> Sort Chosen: Selection <h3>`;
         console.log('selection');
         _border2.style.display = `block`;
         await sortCall('selection');
@@ -469,6 +477,7 @@ function buttonClick(){
     });
     _bubbleButton.addEventListener('click', async function() {
         console.log('bubble');
+        _chosenSort.innerHTML = `<h3> Sort Chosen: Bubble <h3>`;
         sortCall('bubble');
         _border2.style.display = `block`;
         await sortCall('bubble');
@@ -512,7 +521,51 @@ function buttonClick(){
     });
     _mergeButton.addEventListener('click', async function() {
         console.log('merge');
+        _chosenSort.innerHTML = `<h3> Sort Chosen: Merge <h3>`;
         sortCall('merge');
+        _border2.style.display = `block`;
+        await sortCall('merge');
+        setTimeout(function(){
+                var totalSlots = [_default2[0], _default2[1], _default2[2], _default2[3], _default2[4], _default2[5], _default2[6], _default2[7]];
+                var sourceList = [_default2[0].id, _default2[1].id, _default2[2].id, _default2[3].id, _default2[4].id, _default2[5].id, _default2[6].id, _default2[7].id];
+                sourceList = sourceList.map(id => id.replace("slot", ""));
+                console.log("SOURCE: " + sourceList);
+                console.log("before: " + totalSlots[0].id);
+                console.log("endList: " + endList[0]);
+                console.log("after: " + totalSlots[0].id);
+                //totalSlots[0].id = `slot${endList[0]}`;
+            for(i = 0; i < 8; i++){
+                totalSlots[i].style.display = `block`;
+                totalSlots[i].style.backgroundColor = `rgb(${colorData[i]})`;
+            }
+            let finalOrder = [];
+            endList.forEach(endValue => {
+                const index = sourceList.indexOf(endValue.toString());
+                if (index !== -1) {
+                    // If the value is found in sourceList, add it to the orderedList
+                    finalOrder.push(`slot${sourceList[index]}`);
+                } else {
+                    // Handle the case where the value is not found (if needed)
+                    console.warn(`Value '${endValue}' not found in sourceList.`);
+                }
+
+            })
+            console.log("FINAL " + finalOrder);
+            
+            for(i=0; i<8; i++){
+                var x = 0
+                x = finalOrder[i];
+                x = x.slice(-1);
+                console.log(x);
+                totalSlots[x].id = `slot${i}`;
+            }
+            
+    },100);
+    });
+    _insertionButton.addEventListener('click', async function() {
+        console.log('insertion');
+        _chosenSort.innerHTML = `<h3> Sort Chosen: Insertion <h3>`;
+        sortCall('insertion');
         _border2.style.display = `block`;
         await sortCall('merge');
         setTimeout(function(){
