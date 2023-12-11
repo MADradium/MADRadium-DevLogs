@@ -33,6 +33,18 @@
         display: none;
 
     }
+    #space2{
+        z-index: 0;
+        border-style: solid;
+        border-color: white;
+        margin-top: 50px;
+        width: 1500px;
+        right: 305px;
+        height: 480px;
+        position: relative;
+        display: none;
+
+    }
     .default{
         padding: 10px;
         cursor: move;
@@ -42,6 +54,19 @@
         border: 1px solid whitesmoke;
         z-index:1;
         top: 560px;
+        height: 150px;
+        left:21.35%;
+        display: none;
+    }
+    .default2{
+        padding: 10px;
+        cursor: move;
+        z-index: 10;
+        position: absolute;
+        color: #fff; 
+        border: 1px solid whitesmoke;
+        z-index:0;
+        top: 950px;
         height: 150px;
         left:21.35%;
         display: none;
@@ -79,6 +104,15 @@
         top: 0;
         z-index:3;
     }
+    .v2 {
+        border-left: 6px solid green;
+        height: 300px;
+        left: 0.2%;
+        margin-left: -3px;
+        top: 1000px;
+        display:none;
+        z-index:3;
+    }
 </style>
 <body>
 <section id = header>
@@ -106,7 +140,7 @@
 
 </section>
 <div id="space1">
-    <h3>Sort the following colors based how much of the color you picked it has.</h3>
+    <h3>Sort the following colors based how much of the color you picked it has. (least to greatest) </h3>
 </div>
 <div class="v1"></div>
     <div class = "default" id="slot0">  
@@ -166,6 +200,56 @@
         </button>
     </div>
 
+    <div id="space2">
+        <h3>Computer Sorted Colors (least to greatest):</h3>
+    </div>
+    <div class="v2"></div>
+    <div class = "default2" id="slot0">  
+        <div class = headerDefault id="slot0header">Click here to move</div>
+
+
+    </div>
+    <div class = "default2" id="slot1">  
+        <div class = headerDefault id="slot1header">Click here to move</div>
+
+
+    </div>
+    <div class = "default2" id="slot2">  
+        <div class = headerDefault id="slot2header">Click here to move</div>
+
+
+    </div>
+    <div class = "default2" id="slot3">  
+        <div class = headerDefault id="slot3header">Click here to move</div>
+
+
+    </div>
+
+    <div class = "default2" id="slot4">  
+        <div class = headerDefault id="slot4header">Click here to move</div>
+
+
+    </div>
+
+    <div class = "default2" id="slot5">  
+        <div class = headerDefault id="slot5header">Click here to move</div>
+
+
+    </div> 
+
+    <div class = "default2" id="slot6">  
+        <div class = headerDefault id="slot6header">Click here to move</div>
+
+
+    </div> 
+
+    <div class = "default2" id="slot7">  
+        <div class = headerDefault id="slot7header">Click here to move</div>
+
+
+    </div> 
+
+
 <script>
     const _0 = document.getElementById("slot0");
     const _1 = document.getElementById("slot1");
@@ -182,6 +266,8 @@
     const _selectionButton = document.getElementById("Selection");
     const _bubbleButton = document.getElementById("Bubble");
     const _mergeButton = document.getElementById("Merge");
+    const _border2 = document.getElementById("space2");
+    const _default2 = document.getElementsByClassName("default2");
     var colorData = {};
     var whichColor = 0;
     const sortTypes = ["bubble", "selection", "insertion", "merge"];
@@ -294,7 +380,9 @@ function buttonClick(){
         _sortSelect.style.display = "block";
     });
 
-    function sortCall(sortType) {
+    var endList = [];
+
+    async function sortCall(sortType) {
         _sortSelect.style.display = "none";
         var requestBody = {
             rgbData: colorData,
@@ -302,7 +390,7 @@ function buttonClick(){
             sortType: sortType,
             big: false
         };
-        fetch("https://palettepuzzle.stu.nighthawkcodingsociety.com/api/sortingAlgorithm/", {
+        fetch("http://localhost:8115/api/sortingAlgorithm/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -323,6 +411,10 @@ function buttonClick(){
         })
         .then(data => {
             console.log(data);
+            var specificIndex = 7;
+            endSorted = data.steps[7];
+            endList = endSorted;
+            console.log(`Colors all sorted on step${specificIndex}:`, endSorted);
         })
         .catch(error => {
             // handling errors
@@ -330,9 +422,46 @@ function buttonClick(){
         });
     }; 
 
-    _selectionButton.addEventListener('click', function() {
+    _selectionButton.addEventListener('click', async function() {
         console.log('selection');
-        sortCall('selection');
+        _border2.style.display = `block`;
+        await sortCall('selection');
+        setTimeout(function(){
+                var totalSlots = [_default2[0], _default2[1], _default2[2], _default2[3], _default2[4], _default2[5], _default2[6], _default2[7]];
+                var sourceList = [_default2[0].id, _default2[1].id, _default2[2].id, _default2[3].id, _default2[4].id, _default2[5].id, _default2[6].id, _default2[7].id];
+                sourceList = sourceList.map(id => id.replace("slot", ""));
+                console.log("SOURCE: " + sourceList);
+                console.log("before: " + totalSlots[0].id);
+                console.log("endList: " + endList[0]);
+                console.log("after: " + totalSlots[0].id);
+                //totalSlots[0].id = `slot${endList[0]}`;
+            for(i = 0; i < 8; i++){
+                totalSlots[i].style.display = `block`;
+                totalSlots[i].style.backgroundColor = `rgb(${colorData[i]})`;
+            }
+            let finalOrder = [];
+            endList.forEach(endValue => {
+                const index = sourceList.indexOf(endValue.toString());
+                if (index !== -1) {
+                    // If the value is found in sourceList, add it to the orderedList
+                    finalOrder.push(`slot${sourceList[index]}`);
+                } else {
+                    // Handle the case where the value is not found (if needed)
+                    console.warn(`Value '${endValue}' not found in sourceList.`);
+                }
+
+            })
+            console.log("FINAL " + finalOrder);
+            
+            for(i=0; i<8; i++){
+                var x = 0
+                x = finalOrder[i];
+                x = x.slice(-1);
+                console.log(x);
+                totalSlots[x].id = `slot${i}`;
+            }
+            
+    },100);
     });
     _bubbleButton.addEventListener('click', function() {
         console.log('bubble');
