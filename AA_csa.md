@@ -52,6 +52,7 @@ title: Fibonacci Sequence!
                 var resultCol = document.createElement("td");
                 resultCol.innerHTML = String(data[names[i]]["result"]);
                 newRow.appendChild(nameCol);
+                newRow.appendChild(complexityCol);
                 newRow.appendChild(executionCol);
                 newRow.appendChild(resultCol);
                 document.getElementById("fibonacci_data").appendChild(newRow);
