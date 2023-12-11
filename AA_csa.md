@@ -8,6 +8,7 @@ title: Fibonacci Sequence!
 <table id="fibonacci_data">
     <tr>
         <th>Method</th>
+        <th>Time Complexity</th>
         <th>Execution Time (Nanoseconds)</th>
         <th>Result</th>
     </tr>
