@@ -39,7 +39,7 @@ title: Fibonacci Sequence!
                 j--;
             }
             var names = ["For Loop", "While Loop", "Recursion", "Stream Loop", "Golden Ratio", "Matrix Exponentiation"];
-            var complexities = ["O(n)", "O(n)", "O(n<sup>2</sup>)", "O(n)", "O(1)", "O(log(n))"];
+            var complexities = ["O(n)", "O(n)", "O(2<sup>n</sup>)", "O(n)", "O(1)", "O(log(n))"];
             for (var i = 0; i < names.length; i++) {
                 var newRow = document.createElement("tr");
                 newRow.setAttribute("class", "fibonacci")
